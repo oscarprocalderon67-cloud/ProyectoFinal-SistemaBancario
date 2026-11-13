@@ -5,7 +5,11 @@ import javax.swing.SwingUtilities;
 
 public class ProyectoFinal {
     public static void main(String[] args) {
-        // Interfaz inicial para escoger el módulo
+        
+        // 1. Prueba de conexión a la base de datos remota
+        ConexionDB.obtenerConexion(); 
+        
+        // 2. Menú principal
         Object[] opciones = {"Administración", "Cajero Automático"};
         int eleccion = JOptionPane.showOptionDialog(null, 
                 "Seleccione el módulo al que desea ingresar:", 
@@ -18,10 +22,10 @@ public class ProyectoFinal {
             // Abre la ventana de Administración
             SwingUtilities.invokeLater(() -> new AdminGUI().setVisible(true));
         } else if (eleccion == 1) {
-            // Como CajeroGUI "no existe aún", mostramos un mensaje temporal
-            JOptionPane.showMessageDialog(null, "Módulo de cajero en desarrollo...");
+            // Abre el Cajero Automático
+            SwingUtilities.invokeLater(() -> new CajeroGUI().setVisible(true));
         } else {
-            System.exit(0); // Cierra si presiona la 'X'
+            System.exit(0);
         }
     }
 }
